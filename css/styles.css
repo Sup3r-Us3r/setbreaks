@@ -3,7 +3,7 @@
 
 body {
   font-family: 'Roboto';
-  background: url('icons/montain.svg') center bottom repeat-x, url('icons/stars.svg') repeat-x, rgb(11, 10, 13);
+  background: url('assets/montain.svg') center bottom repeat-x, url('assets/stars.svg') repeat-x, rgb(11, 10, 13);
 }
 
 /* /////////////////////////////////////////////////////////////////////////////////////////////////////////// */
