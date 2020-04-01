@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <title>ALERTA DE PAUSAS</title>
+</head>
+<body>
+  <div style="width: 100%; display: flex; justify-content: flex-end; box-sizing: border-box;">
+    <div class="container__toast hide__toast">
+      <p>Pausas definidas com sucesso!</p>
+    </div>
+  </div>
+
+  <div class="container__defineBreaks">
+    <div class="groupBreaks">
+      <h1>Defina suas Pausas</h1>
+      <div class="time__pauseAlert">
+        <p>1ª</p>
+        <input type="number" min="0" placeholder="H">
+        <span>:</span>
+        <input type="number" min="0" placeholder="M">
+      </div>
+      <div class="time__pauseAlert">
+        <p>2ª</p>
+        <input type="number" min="0" placeholder="H">
+        <span>:</span>
+        <input type="number" min="0" placeholder="M">
+      </div>
+      <div class="time__pauseAlert">
+        <p>3ª</p>
+        <input type="number" min="0" placeholder="H">
+        <span>:</span>
+        <input type="number" min="0" placeholder="M">
+      </div>
+    
+      <div class="saveBreaks__pauseAlert">
+        <button type="button">SALVAR</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container__pauseAlert">
+    <div class="interval__pauseAlert">
+      <span class="alert__pauseAlert"></span>
+    </div>
+  </div>
+</body>
+</html>
