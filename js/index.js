@@ -78,81 +78,83 @@ function popupAlert() {
 
   const pauses = JSON.parse(localStorage.getItem('pauseAlert'));
 
-  window.setInterval(() => {
-    const date = new Date();
+  if (pauses !== null) {
+    window.setInterval(() => {
+      const date = new Date();
 
-    const display = {
-      show: () => {
-        if (container.classList.contains('hide__pauseAlert')) {
-          container.classList.remove('hide__pauseAlert');
-          container.classList.add('show__pauseAlert');
+      const display = {
+        show: () => {
+          if (container.classList.contains('hide__pauseAlert')) {
+            container.classList.remove('hide__pauseAlert');
+            container.classList.add('show__pauseAlert');
+            containerDefineBreaks.classList.add('hide__pauseAlert');
+          }
+        },
+        hide: () => {
+          if (container.classList.contains('show__pauseAlert')) {
+            container.classList.remove('show__pauseAlert');
+            container.classListr.add('hide__pauseAlet');
+          }
+        }
+      }
+
+      if (date.getHours() === transformTime(pauses.pause1).hour && date.getMinutes() === transformTime(pauses.pause1).minutes) {
+        if (localStorage.getItem('redirectPause1') === 'true') {
+          display.show();
+          pauseAlert.innerText = 'PAUSA 10 MIN';
+          return;
+        } else {
+          localStorage.setItem('redirectPause1', 'true');
+          display.show();
+          pauseAlert.innerText = 'PAUSA 10 MIN';
+          window.open(`${window.location.href}`);
+          return;
+        }
+      } else {
+        containerDefineBreaks.classList.remove('hide__pauseAlert');
+        container.classList.add('hide__pauseAlert');
+        localStorage.removeItem('redirectPause1');
+      }
+
+      if (date.getHours() === transformTime(pauses.pause2).hour && date.getMinutes() === transformTime(pauses.pause2).minutes) {
+        if (localStorage.getItem('redirectPause2') === 'true') {
           containerDefineBreaks.classList.add('hide__pauseAlert');
+          display.show();
+          pauseAlert.innerText = 'PAUSA 20 MIN';
+          return;
+        } else {
+          containerDefineBreaks.classList.add('hide__pauseAlert');
+          localStorage.setItem('redirectPause2', 'true');
+          display.show();
+          pauseAlert.innerText = 'PAUSA 20 MIN';
+          window.open(`${window.location.href}`);
+          return;
         }
-      },
-      hide: () => {
-        if (container.classList.contains('show__pauseAlert')) {
-          container.classList.remove('show__pauseAlert');
-          container.classListr.add('hide__pauseAlet');
-        }
+      } else {
+        containerDefineBreaks.classList.remove('hide__pauseAlert');
+        container.classList.add('hide__pauseAlert');
+        localStorage.removeItem('redirectPause2');
       }
-    }
 
-    if (date.getHours() === transformTime(pauses.pause1).hour && date.getMinutes() === transformTime(pauses.pause1).minutes) {
-      if (localStorage.getItem('redirectPause1') === 'true') {
-        display.show();
-        pauseAlert.innerText = 'PAUSA 10 MIN';
-        return;
+      if (date.getHours() === transformTime(pauses.pause3).hour && date.getMinutes() === transformTime(pauses.pause3).minutes) {
+        if (localStorage.getItem('redirectPause3') === 'true') {
+          containerDefineBreaks.classList.add('hide__pauseAlert');
+          display.show();
+          pauseAlert.innerText = 'PAUSA 30 MIN';
+        } else {
+          localStorage.setItem('redirectPause3', 'true');
+          containerDefineBreaks.classList.add('hide__pauseAlert');
+          display.show();
+          pauseAlert.innerText = 'PAUSA 3 MIN';
+          window.open(`${window.location.href}`);
+        }
       } else {
-        localStorage.setItem('redirectPause1', 'true');
-        display.show();
-        pauseAlert.innerText = 'PAUSA 10 MIN';
-        window.open(`${window.location.href}`);
-        return;
+        containerDefineBreaks.classList.remove('hide__pauseAlert');
+        container.classList.add('hide__pauseAlert');
+        localStorage.removeItem('redirectPause3');
       }
-    } else {
-      containerDefineBreaks.classList.remove('hide__pauseAlert');
-      container.classList.add('hide__pauseAlert');
-      localStorage.removeItem('redirectPause1');
-    }
-  
-    if (date.getHours() === transformTime(pauses.pause2).hour && date.getMinutes() === transformTime(pauses.pause2).minutes) {
-      if (localStorage.getItem('redirectPause2') === 'true') {
-        containerDefineBreaks.classList.add('hide__pauseAlert');
-        display.show();
-        pauseAlert.innerText = 'PAUSA 20 MIN';
-        return;
-      } else {
-        containerDefineBreaks.classList.add('hide__pauseAlert');
-        localStorage.setItem('redirectPause2', 'true');
-        display.show();
-        pauseAlert.innerText = 'PAUSA 20 MIN';
-        window.open(`${window.location.href}`);
-        return;
-      }
-    } else {
-      containerDefineBreaks.classList.remove('hide__pauseAlert');
-      container.classList.add('hide__pauseAlert');
-      localStorage.removeItem('redirectPause2');
-    }
-  
-    if (date.getHours() === transformTime(pauses.pause3).hour && date.getMinutes() === transformTime(pauses.pause3).minutes) {
-      if (localStorage.getItem('redirectPause3') === 'true') {
-        containerDefineBreaks.classList.add('hide__pauseAlert');
-        display.show();
-        pauseAlert.innerText = 'PAUSA 30 MIN';
-      } else {
-        localStorage.setItem('redirectPause3', 'true');
-        containerDefineBreaks.classList.add('hide__pauseAlert');
-        display.show();
-        pauseAlert.innerText = 'PAUSA 3 MIN';
-        window.open(`${window.location.href}`);
-      }
-    } else {
-      containerDefineBreaks.classList.remove('hide__pauseAlert');
-      container.classList.add('hide__pauseAlert');
-      localStorage.removeItem('redirectPause3');
-    }
-  }, 1000);
+    }, 1000);
+  }
 }
 
 // CALL FUNCTIONS
