@@ -14,6 +14,10 @@
   </a>
 
   <img alt="License" src="https://img.shields.io/badge/license-MIT-%2304D361">
+  
+  <a href="https://setbreaks.netlify.com">
+    <img src="https://api.netlify.com/api/v1/badges/bfbe2a42-594c-46b2-810a-9661393247b4/deploy-status">
+  </a>
 
   <a href="https://github.com/Sup3r-Us3r/setbreaks/stargazers">
     <img alt="Stargazers" src="https://img.shields.io/github/stars/Sup3r-Us3r/setbreaks?style=social">
