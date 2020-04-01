@@ -3,12 +3,12 @@
 
 body {
   font-family: 'Roboto';
-  background: url('assets/montain.png') fixed bottom repeat-x, url('assets/stars.png') repeat-x, rgb(11, 10, 13);
+  background: url('https://raw.githubusercontent.com/Sup3r-Us3r/setbreaks/master/assets/montain.png') fixed bottom repeat-x, url('https://raw.githubusercontent.com/Sup3r-Us3r/setbreaks/master/assets/stars.png') repeat-x, rgb(11, 10, 13);
 }
 
 @media screen and (max-width: 500px) {
   body {
-    background: url('assets/montain.png') center bottom repeat-x, url('assets/stars.png') repeat-x, rgb(11, 10, 13);
+    background: url('https://raw.githubusercontent.com/Sup3r-Us3r/setbreaks/master/assets/montain.png') center bottom repeat-x, url('https://raw.githubusercontent.com/Sup3r-Us3r/setbreaks/master/assets/stars.png') repeat-x, rgb(11, 10, 13);
   }
 }
 
