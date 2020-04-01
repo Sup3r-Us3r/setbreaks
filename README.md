@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img alt="Be The Hero" src="https://raw.githubusercontent.com/Sup3r-Us3r/setbreaks/master/assets/pause.png" width="200px" />
+  <img alt="Set Breaks" src="https://raw.githubusercontent.com/Sup3r-Us3r/setbreaks/master/assets/pause.png" width="200px" />
 </h1>
 
 <h3 align="center">Keep calm, this application will inform you</h3>
@@ -9,7 +9,7 @@
 <p align="center">
   <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/Sup3r-Us3r/setbreaks?color=%2304D361">
 
-  <a href="https://rocketseat.com.br">
+  <a href="https://github.com/Sup3r-Us3r">
     <img alt="Made by Sup3r-Us3r" src="https://img.shields.io/badge/made%20by-Sup3r%20Us3r-%2304D361">
   </a>
 
