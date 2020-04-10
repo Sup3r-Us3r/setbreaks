@@ -1,6 +1,24 @@
 // APPLY OVERFLOW HIDDEN IN BODY
 document.body.style.overflow = 'hidden';
 
+// INIT MUSIC DATA AND SETTINGS
+const audio = new Audio(); 
+audio.src = 'https://raw.githubusercontent.com/Sup3r-Us3r/setbreaks/master/assets/sound.mp3';
+audio.load();
+audio.volume = localStorage.getItem('setVolume') || 1;
+document.querySelector('.rangeVolume input').value = audio.volume * 100;
+audio.muted = localStorage.getItem('setMuted') || false;
+const iconVol = [...document.querySelectorAll('.container__soundVolume .soundControl i')];
+if (localStorage.getItem('setMuted') === 'true') {
+  iconVol[0].style.display = 'none';
+  iconVol[1].style.display = 'block';
+  audio.muted = true;
+} else {
+  iconVol[0].style.display = 'block';
+  iconVol[1].style.display = 'none';
+  audio.muted = false;
+}
+
 // FIND ELEMENTS
 const container = document.querySelector('.container__pauseAlert');
 const containerDefineBreaks = document.querySelector('.container__defineBreaks');
@@ -11,6 +29,60 @@ const containerToast = document.querySelector('.container__toast');
 const toast = document.querySelector('.toastEnd');
 const fiveMinAdvance = document.querySelector('#fiveMin');
 const threeMinAdvance = document.querySelector('#threeMin');
+const containerSoundVolume = document.querySelector('.container__soundVolume');
+
+// FUNCTION FOR PLAY OR PAUSE MUSIC
+function playOrPauseMusic() {
+  containerSoundVolume.addEventListener('mouseover', () => document.querySelector('.rangeVolume').style.display = 'flex');
+  containerSoundVolume.addEventListener('mouseout', () => document.querySelector('.rangeVolume').style.display = 'none');
+
+  const iconVol = [...containerSoundVolume.querySelectorAll('.soundControl i')];
+
+  iconVol.forEach(elem => {
+    elem.addEventListener('click', () => {
+      if (elem.dataset.vol === 'up') {
+        iconVol[0].style.display = 'none';
+        iconVol[1].style.display = 'block';
+        audio.muted = true;
+        return localStorage.setItem('setMuted', true);
+      } else {
+        iconVol[0].style.display = 'block';
+        iconVol[1].style.display = 'none';
+        audio.muted = false;
+        return localStorage.setItem('setMuted', false);
+      }
+    });
+  });
+
+  return audioFunctions = {
+    play: () => {
+      audio.loop = true;
+
+      const audioPromise = audio.play();
+
+      if (audioPromise !== undefined) {
+        audioPromise
+          .then(() => audio.play())
+          .catch(err => err);
+      }
+    },
+    pause: () => audio.pause(),
+  }
+}
+
+// FUNCTION FOR HANDLE SOUND VOLUME
+function handleSoundVolume() {      
+  containerSoundVolume.addEventListener('input', e => {
+    audio.volume = e.target.value / 100;
+
+    return localStorage.setItem('setVolume', audio.volume);
+  });
+  containerSoundVolume.addEventListener('change', e => {
+    audio.volume = e.target.value / 100
+
+    return localStorage.setItem('setVolume', audio.volume);
+  });
+}
 
 // FUNCTION FOR LIMIT DIGITS
 function handleLimitDigits() {
@@ -207,6 +279,15 @@ function popupAlert() {
       }
 
       if (date.getHours() === newPausesFormatted.pause1().hour && date.getMinutes() === newPausesFormatted.pause1().minutes) {
+        // SETTINGS MUSIC
+        containerSoundVolume.style.display = 'none';
+        if (localStorage.getItem('playMusic') === 'true') {
+        } else {
+          playOrPauseMusic().play();
+          localStorage.setItem('playMusic', 'true');
+        }
+
+        // SETTINGS FOR REDIRECT
         if (localStorage.getItem('redirectPause1') === 'true') {
           display.show();
           pauseAlert.innerText = 'PAUSA 10 MIN';
@@ -215,57 +296,87 @@ function popupAlert() {
           localStorage.setItem('redirectPause1', 'true');
           display.show();
           pauseAlert.innerText = 'PAUSA 10 MIN';
-          window.open(`${window.location.href}`);
+          if (!document.hasFocus()) {
+            window.open(`${window.location.href}`);
+          }
           return;
         }
       } else {
         containerDefineBreaks.classList.remove('hide__pauseAlert');
         container.classList.add('hide__pauseAlert');
         localStorage.removeItem('redirectPause1');
+        localStorage.removeItem('playMusic');
+        playOrPauseMusic().pause();
+        containerSoundVolume.style.display = 'flex';
       }
 
       if (date.getHours() === newPausesFormatted.pause2().hour && date.getMinutes() === newPausesFormatted.pause2().minutes) {
+        // SETTINGS MUSIC
+        containerSoundVolume.style.display = 'none';
+        if (localStorage.getItem('playMusic') === 'true') {
+        } else {
+          playOrPauseMusic().play();
+          localStorage.setItem('playMusic', 'true');
+        }
+
+        // SETTINGS FOR REDIRECT
         if (localStorage.getItem('redirectPause2') === 'true') {
-          containerDefineBreaks.classList.add('hide__pauseAlert');
           display.show();
           pauseAlert.innerText = 'PAUSA 20 MIN';
           return;
         } else {
-          containerDefineBreaks.classList.add('hide__pauseAlert');
           localStorage.setItem('redirectPause2', 'true');
           display.show();
           pauseAlert.innerText = 'PAUSA 20 MIN';
-          window.open(`${window.location.href}`);
+          if (!document.hasFocus()) {
+            window.open(`${window.location.href}`);
+          }
           return;
         }
       } else {
         containerDefineBreaks.classList.remove('hide__pauseAlert');
         container.classList.add('hide__pauseAlert');
         localStorage.removeItem('redirectPause2');
+        localStorage.removeItem('playMusic');
+        playOrPauseMusic().pause();
+        containerSoundVolume.style.display = 'flex';
       }
 
       if (date.getHours() === newPausesFormatted.pause3().hour && date.getMinutes() === newPausesFormatted.pause3().minutes) {
+        // SETTINGS MUSIC
+        containerSoundVolume.style.display = 'none';
+        if (localStorage.getItem('playMusic') === 'true') {
+        } else {
+          playOrPauseMusic().play();
+          localStorage.setItem('playMusic', 'true');
+        }
+
+        // SETTINGS FOR REDIRECT
         if (localStorage.getItem('redirectPause3') === 'true') {
-          containerDefineBreaks.classList.add('hide__pauseAlert');
           display.show();
           pauseAlert.innerText = 'PAUSA 10 MIN';
         } else {
           localStorage.setItem('redirectPause3', 'true');
-          containerDefineBreaks.classList.add('hide__pauseAlert');
           display.show();
           pauseAlert.innerText = 'PAUSA 10 MIN';
-          window.open(`${window.location.href}`);
+          if (!document.hasFocus()) {
+            window.open(`${window.location.href}`);
+          }
         }
       } else {
         containerDefineBreaks.classList.remove('hide__pauseAlert');
         container.classList.add('hide__pauseAlert');
         localStorage.removeItem('redirectPause3');
+        localStorage.removeItem('playMusic');
+        playOrPauseMusic().pause();
+        containerSoundVolume.style.display = 'flex';
       }
     }, 1000);
   }
 }
 
 // CALL FUNCTIONS
+handleSoundVolume();
 handleLimitDigits();
 getBreaks();
 popupAlert();
