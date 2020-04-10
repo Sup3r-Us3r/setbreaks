@@ -238,7 +238,79 @@ input[type=color] {
 }
 
 /* /////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+/* SOUND VOLUME */
+
+.container__soundVolume {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+}
+
+.container__soundVolume .rangeVolume {
+  display: none;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 4.5px;
+}
+
+.container__soundVolume .rangeVolume input {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 40%;
+  height: 3px;
+  border-radius: 10px;
+  background: #fff;
+  outline: none;
+  cursor: pointer;
+}
+
+.container__soundVolume .rangeVolume input::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background: #fff;
+  cursor: pointer;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2),
+    0 0 0 5px rgba(255, 255, 255, 0.1), 0 0 0 10px rgba(255, 255, 255, 0.05);
+}
+
+.container__soundVolume .rangeVolume input::-moz-range-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background: #fff;
+  cursor: pointer;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2),
+    0 0 0 5px rgba(255, 255, 255, 0.1), 0 0 0 10px rgba(255, 255, 255, 0.05);
+}
+
+.container__soundVolume .soundControl i svg {
+  margin-right: 6px;
+  height: 20px;
+  width: 20px;
+}
+
+.container__soundVolume .soundControl i svg:hover {
+  cursor: pointer;
+}
+
+/* /////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 /* TOAST */
+
+#toastWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  box-sizing: border-box;
+}
 
 .container__toast {
   position: fixed;
